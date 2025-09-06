@@ -1,7 +1,7 @@
 {
 	"name": "ecoledirecte-api",
 	"version": "0.0.1-alpha",
-	"description": "A TypeScript wrapper for Ecole Directe by EduWire",
+	"description": "A TypeScript wrapper for Ecole Directe by Aplim",
 	"keywords": [
 		"ecole",
 		"ecole directe",
