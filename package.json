@@ -1,0 +1,30 @@
+{
+	"name": "ecoledirecte-api",
+	"version": "0.0.1-alpha",
+	"description": "A TypeScript wrapper for Ecole Directe by EduWire",
+	"keywords": [
+		"ecole",
+		"ecole directe",
+		"aplim",
+		"api",
+		"ED",
+		"typescript"
+	],
+	"license": "ISC",
+	"author": "Godet Rémy",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"example:login": "bun run examples/login.ts"
+	},
+	"devDependencies": {
+		"@types/node": "^20.6.0",
+		"dotenv": "^17.2.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.3.0"
+	},
+	"dependencies": {}
+}
