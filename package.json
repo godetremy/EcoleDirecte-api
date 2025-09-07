@@ -18,7 +18,8 @@
 	"scripts": {
 		"build": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"example:login": "bun run examples/login.ts"
+		"example:login": "bun run examples/login.ts",
+		"example:homework": "bun run examples/homework.ts"
 	},
 	"devDependencies": {
 		"@types/node": "^20.6.0",
