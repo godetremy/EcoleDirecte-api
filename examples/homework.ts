@@ -22,5 +22,13 @@ void async function main() {
 		console.log('---');
 	}
 
+	if (homework.data.matieres.length > 0) {
+		console.log("Marking first homework as done...");
+		let response = await instance.homework.markHomeworkAsDone(homework.data.matieres[0].aFaire.idDevoir);
+		console.log("Success:", response.code === 200);
+		console.log("Marking first homework as not done...");
+		console.log("Success:", (await instance.homework.markHomeworkAsNotDone(homework.data.matieres[0].aFaire.idDevoir)).code === 200);
+	}
+
 	process.exit(0);
 }();

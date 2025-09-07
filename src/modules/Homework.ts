@@ -1,7 +1,7 @@
 import {EDRestManager} from "~/rest/RESTManager";
 import {EDCredentials} from "~/types/auth";
 import {ERROR_AUTH_NO_SELECTED_ACCOUNT, ERROR_AUTH_NOT_LOGGED_IN, ERROR_HOMEWORK_INVALID_DATE} from "~/const/error";
-import {HOMEWORK_GET} from "~/rest/endpoints";
+import {HOMEWORK_GET, HOMEWORK_PUT} from "~/rest/endpoints";
 import {convertAccountTypeToUrlPath} from "~/utils/account";
 import {EDHomeworkDay} from "~/types/homework";
 import {decodeBase64} from "~/utils/base64";
@@ -40,5 +40,37 @@ export class EDHomework {
 				subject.aFaire.contenu = decodeBase64(subject.aFaire.contenu);
 
 		return homework;
+	}
+
+	public async markHomeworkAsDone(homeworkId: number | number[]): Promise<EDResponse<undefined>> {
+		if (!this.credentials.token)
+			throw ERROR_AUTH_NOT_LOGGED_IN;
+		if (!this.credentials.accountId || !this.credentials.accountType)
+			throw ERROR_AUTH_NO_SELECTED_ACCOUNT;
+
+		if (!Array.isArray(homeworkId))
+			homeworkId = [homeworkId];
+
+		return this.restManager.post<EDResponse<undefined>>(
+			HOMEWORK_PUT(convertAccountTypeToUrlPath(this.credentials.accountType), this.credentials.accountId),
+			{ idDevoirsEffectues: homeworkId, idDevoirsNonEffectues: [] },
+			{ "X-Token": this.credentials.token }
+		);
+	}
+
+	public async markHomeworkAsNotDone(homeworkId: number | number[]): Promise<EDResponse<undefined>> {
+		if (!this.credentials.token)
+			throw ERROR_AUTH_NOT_LOGGED_IN;
+		if (!this.credentials.accountId || !this.credentials.accountType)
+			throw ERROR_AUTH_NO_SELECTED_ACCOUNT;
+
+		if (!Array.isArray(homeworkId))
+			homeworkId = [homeworkId];
+
+		return this.restManager.post<EDResponse<undefined>>(
+			HOMEWORK_PUT(convertAccountTypeToUrlPath(this.credentials.accountType), this.credentials.accountId),
+			{ idDevoirsEffectues: [], idDevoirsNonEffectues: homeworkId },
+			{ "X-Token": this.credentials.token }
+		);
 	}
 }
