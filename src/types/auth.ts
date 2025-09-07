@@ -1,7 +1,9 @@
-import {EDAccount} from "~/types/account";
+import {EDAccount, EDAccountKind} from "~/types/account";
 
 interface EDCredentials {
 	token?: string;
+	accountId?: number;
+	accountType?: EDAccountKind;
 }
 
 interface EDAuthResponse {

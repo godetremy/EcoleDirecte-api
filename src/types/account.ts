@@ -61,7 +61,10 @@ interface EDAccount {
 
 export type {
 	EDAccount,
-	EDAccountKind,
 	EDAccountProfile,
 	EDAccountIndividualSettings
+}
+
+export {
+	EDAccountKind
 }
