@@ -61,7 +61,7 @@ void async function main () {
 
 			console.log("Accounts:");
 			for (const account of userToken.data.accounts) {
-				console.log(`- ${account.prenom} ${account.nom} (${account.typeCompte})`);
+				console.log(`- ${account.prenom} ${account.nom} (${account.typeCompte} / ${account.id})`);
 			}
 		} else {
 			console.log("Login failed");
