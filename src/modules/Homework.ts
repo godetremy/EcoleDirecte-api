@@ -36,8 +36,15 @@ export class EDHomework {
 		);
 
 		if (decodeContent)
+		{
 			for (const subject of homework.data.matieres)
+			{
 				subject.aFaire.contenu = decodeBase64(subject.aFaire.contenu);
+				subject.aFaire.contenuDeSeance.contenu = decodeBase64(subject.aFaire.contenuDeSeance.contenu);
+			}
+		}
+
+
 
 		return homework;
 	}
